@@ -35,7 +35,7 @@ rm -f $(ls /boot/config/plugins/&name;/&name;*.txz 2>/dev/null|grep -v '&version
 **Prometheus Wireguard Exporter**
 
 Description missing  
-This Plugin is based on the prometheus_wireguard_exporter from MindFlavor: https://github.com/MindFlavor/prometheus_wireguard_exporter
+This Plugin is based on prometheus_wireguard_exporter from MindFlavor: https://github.com/MindFlavor/prometheus_wireguard_exporter
 </INLINE>
 </FILE>
 
