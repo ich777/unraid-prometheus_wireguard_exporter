@@ -1,0 +1,60 @@
+<?xml version='1.0' standalone='yes'?>
+<!DOCTYPE PLUGIN [
+  <!ENTITY name      "prometheus_wireguard_exporter">
+  <!ENTITY author    "ich777">
+  <!ENTITY version   "2021.05.27">
+  <!ENTITY gitURL    "https://github.com/&author;/unraid-&name;/raw/master">
+  <!ENTITY pluginURL "&gitURL;/&name;.plg">
+  <!ENTITY md5       "2c519aae00413acddfa56728b657715b">
+  <!ENTITY plugin    "/boot/config/plugins/&name;">
+  <!ENTITY emhttp    "/usr/local/emhttp/plugins/&name;">
+]>
+
+<PLUGIN  name="&name;" author="&author;" version="&version;" pluginURL="&pluginURL;" min="6.9.0">
+
+<CHANGES>
+
+###2021.05.27
+- Initial release - based on version 3.5.0
+
+</CHANGES>
+
+<FILE Run="/bin/bash">
+<INLINE>
+rm -f $(ls /boot/config/plugins/&name;/&name;*.txz 2>/dev/null|grep -v '&version;')
+</INLINE>
+</FILE>
+
+<FILE Name="/boot/config/plugins/&name;/&name;-&version;.txz" Run="upgradepkg --install-new">
+<URL>&gitURL;/packages/&name;-&version;.txz</URL>
+<MD5>&md5;</MD5>
+</FILE>
+
+<FILE Name="&emhttp;/README.md">
+<INLINE>
+**Prometheus Wireguard Exporter**
+
+Description missing
+This Plugin is based on the prometheus_wireguard_exporter from MindFlavor: https://github.com/MindFlavor/prometheus_wireguard_exporter
+</INLINE>
+</FILE>
+
+<FILE Run="/bin/bash" Method="remove">
+<INLINE>
+
+echo "------------------------------------------------"
+echo "---Uninstalling prometheus_wireguard_exporter---"
+echo "------------------------------------------------"
+# Remove plugin related files
+removepkg &name;-&version;
+rm -rf /usr/local/emhttp/plugins/&name;
+rm -rf &plugin;
+echo
+echo "---------------------------------------------------------------"
+echo "---Uninstallation of prometheus_wireguard_exporter complete!---"
+echo "---------------------------------------------------------------"
+echo
+
+</INLINE>
+</FILE>
+</PLUGIN>
