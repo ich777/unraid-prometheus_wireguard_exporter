@@ -1,2 +1,0 @@
-# unraid-prometheus-wireguard-exporter
-
