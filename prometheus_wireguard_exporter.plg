@@ -26,7 +26,7 @@ rm -f $(ls /boot/config/plugins/&name;/&name;*.txz 2>/dev/null|grep -v '&version
 </FILE>
 
 <FILE Name="/boot/config/plugins/&name;/&name;-&version;.txz" Run="upgradepkg --install-new">
-<URL>&gitURL;/packages/&name;-&version;.txz</URL>
+<URL>&gitURL;/packages/&name;-&version;.tgz</URL>
 <MD5>&md5;</MD5>
 </FILE>
 
