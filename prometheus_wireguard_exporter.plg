@@ -3,7 +3,7 @@
   <!ENTITY name      "prometheus_wireguard_exporter">
   <!ENTITY author    "ich777">
   <!ENTITY version   "2021.05.27">
-  <!ENTITY gitURL    "https://github.com/&author;/unraid-&name;/raw/master">
+  <!ENTITY gitURL    "https://raw.githubusercontent.com/$author;/unraid-&name;/master">
   <!ENTITY pluginURL "&gitURL;/&name;.plg">
   <!ENTITY md5       "2c519aae00413acddfa56728b657715b">
   <!ENTITY plugin    "/boot/config/plugins/&name;">
