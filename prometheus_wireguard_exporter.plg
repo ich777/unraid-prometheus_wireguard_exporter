@@ -34,7 +34,8 @@ rm -f $(ls /boot/config/plugins/&name;/&name;*.txz 2>/dev/null|grep -v '&version
 <INLINE>
 **Prometheus Wireguard Exporter**
 
-Description missing  
+Is a slim plugin, that takes the informations gathered from the wireguard API and provides it to a prometheus database. Usage is not limited to prometheus only. Data can be formated and displayed to any database or graphical node.  
+ATTENTION: Ports must be set up correctly to run this application. It is recommended to run prometheus directly as a Docker container.  
 This Plugin is based on prometheus_wireguard_exporter from MindFlavor: https://github.com/MindFlavor/prometheus_wireguard_exporter
 </INLINE>
 </FILE>
