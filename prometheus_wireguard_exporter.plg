@@ -52,7 +52,7 @@ if [ -z "$(pidof prometheus_wireguard_exporter)" ]; then
   if [ -f &plugin;/port.cfg ]; then
     PORT="$(cat $plugin;/port.cfg)"
     REGEX="^[0-9]+$"
-    if [ -z "${PORT}" ];
+    if [ -z "${PORT}" ]; then
       echo "---Something went wrong, the Port number is empty!---"
       echo "---Please make sure that you entered only the port---"
       echo "-----------number in your 'port.cfg' file!-----------"
