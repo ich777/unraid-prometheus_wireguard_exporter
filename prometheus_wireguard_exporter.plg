@@ -45,9 +45,6 @@ This Plugin is based on prometheus_wireguard_exporter from MindFlavor: https://g
 </INLINE>
 </FILE>
 
-<FILE Run="/bin/bash" Method="remove">
-<INLINE>
-
 <FILE Run="/bin/bash">
 <INLINE>
 
@@ -84,6 +81,9 @@ fi
 
 </INLINE>
 </FILE>
+
+<FILE Run="/bin/bash" Method="remove">
+<INLINE>
 
 echo "------------------------------------------------"
 echo "---Uninstalling prometheus_wireguard_exporter---"
