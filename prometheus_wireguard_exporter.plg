@@ -89,6 +89,7 @@ echo "------------------------------------------------"
 echo "---Uninstalling prometheus_wireguard_exporter---"
 echo "------------------------------------------------"
 # Remove plugin related files
+kill "$(pidof prometheus_wireguard_exporter)"
 removepkg &name;-&version;
 rm -rf /usr/local/emhttp/plugins/&name;
 rm -rf &plugin;
