@@ -2,7 +2,7 @@
 <!DOCTYPE PLUGIN [
   <!ENTITY name      "prometheus_wireguard_exporter">
   <!ENTITY author    "ich777">
-  <!ENTITY version   "2021.05.27">
+  <!ENTITY version   "2021.05.31">
   <!ENTITY gitURL    "https://raw.githubusercontent.com/&author;/unraid-&name;/master">
   <!ENTITY pluginURL "&gitURL;/&name;.plg">
   <!ENTITY md5       "2c519aae00413acddfa56728b657715b">
@@ -13,6 +13,10 @@
 <PLUGIN  name="&name;" author="&author;" version="&version;" pluginURL="&pluginURL;" min="6.9.0">
 
 <CHANGES>
+
+###2021.05.31
+- Added start of Daemon on plugin installation/start of unRAID
+- Added option to start with custom port number
 
 ###2021.05.27
 - Initial release - based on version 3.5.0
@@ -35,6 +39,7 @@ rm -f $(ls /boot/config/plugins/&name;/&name;*.txz 2>/dev/null|grep -v '&version
 **Prometheus Wireguard Exporter**
 
 Is a slim plugin, that takes the informations gathered from the wireguard API and provides it to a prometheus database. Usage is not limited to prometheus only. Data can be formated and displayed to any database or graphical node.  
+Export URL: The URL for the exportet metrics is: 'http://YOURunRAIDIP:9586/metrics'
 ATTENTION: Ports must be set up correctly to run this application. It is recommended to run prometheus directly as a Docker container.  
 This Plugin is based on prometheus_wireguard_exporter from MindFlavor: https://github.com/MindFlavor/prometheus_wireguard_exporter
 </INLINE>
@@ -42,6 +47,43 @@ This Plugin is based on prometheus_wireguard_exporter from MindFlavor: https://g
 
 <FILE Run="/bin/bash" Method="remove">
 <INLINE>
+
+<FILE Run="/bin/bash">
+<INLINE>
+
+if [ -z "$(pidof prometheus_wireguard_exporter)" ]; then
+  if [ -f &plugin;/port.cfg ]; then
+    PORT="$(cat $plugin;/port.cfg)"
+    REGEX="^[0-9]+$"
+    if [ -z "${PORT}" ];
+      echo "---Something went wrong, the Port number is empty!---"
+      echo "---Please make sure that you entered only the port---"
+      echo "-----------number in your 'port.cfg' file!-----------"
+      echo
+      exit 1
+    fi
+    if ! [[ $PORT =~ $REGEX ]] ; then
+      echo "---Something went wrong, the Port number is not a number!---"
+      echo "---Please make sure that you entered a valid port number----"
+      echo "------------------in your 'port.cfg' file!------------------"
+      echo
+      exit 1
+    fi
+    echo "----Staring prometheus_wireguard_exporter on custom port: ${PORT}-----"
+    echo
+    echo "/usr/bin/prometheus_wireguard_exporter -p $PORT" | at now
+  else
+    echo "----Staring prometheus_wireguard_exporter on default port: 9586----"
+    echo
+    echo "/usr/bin/prometheus_wireguard_exporter" | at now
+  fi
+else
+  echo "---Nothing to do, prometheus_wireguard_exporter already started!---"
+  echo
+fi
+
+</INLINE>
+</FILE>
 
 echo "------------------------------------------------"
 echo "---Uninstalling prometheus_wireguard_exporter---"
