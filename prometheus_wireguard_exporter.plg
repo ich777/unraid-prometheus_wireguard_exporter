@@ -48,6 +48,7 @@ This Plugin is based on prometheus_wireguard_exporter from MindFlavor: https://g
 <FILE Run="/bin/bash">
 <INLINE>
 
+echo
 if [ -z "$(pidof prometheus_wireguard_exporter)" ]; then
   if [ -f &plugin;/port.cfg ]; then
     PORT="$(cat $plugin;/port.cfg)"
