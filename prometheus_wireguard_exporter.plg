@@ -93,7 +93,6 @@ kill "$(pidof prometheus_wireguard_exporter)"
 removepkg &name;-&version;
 rm -rf /usr/local/emhttp/plugins/&name;
 rm -rf &plugin;
-rm -rf /root/dead.letter
 echo
 echo "---------------------------------------------------------------"
 echo "---Uninstallation of prometheus_wireguard_exporter complete!---"
