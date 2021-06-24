@@ -5,7 +5,9 @@ cd ${DATA_DIR}/prometheus_wireguard_exporter
 git checkout $LAT_V
 cargo install --path . --root ${DATA_DIR}/${LAT_V}/usr/ -j${CPU_COUNT}
 
-# Cleanup
+# Download icon and cleanup
+mkdir -p ${DATA_DIR}/v${LAT_V} ${DATA_DIR}/${LAT_V}/usr/local/emhttp/plugins/prometheus_wireguard_exporter/images
+wget -q -O ${DATA_DIR}/${LAT_V}/usr/local/emhttp/plugins/prometheus_wireguard_exporter/images/prometheus_wireguard_exporter.png https://raw.githubusercontent.com/ich777/docker-templates/master/ich777/images/wireguard.png
 cd ${DATA_DIR}/${LAT_V}
 rm -rf ${DATA_DIR}/${LAT_V}/usr/.crate*
 chmod -R 755 ${DATA_DIR}/$LAT_V/
