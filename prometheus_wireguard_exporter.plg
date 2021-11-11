@@ -2,10 +2,10 @@
 <!DOCTYPE PLUGIN [
   <!ENTITY name      "prometheus_wireguard_exporter">
   <!ENTITY author    "ich777">
-  <!ENTITY version   "2021.07.08">
+  <!ENTITY version   "2021.11.03">
   <!ENTITY gitURL    "https://raw.githubusercontent.com/&author;/unraid-&name;/master">
   <!ENTITY pluginURL "&gitURL;/&name;.plg">
-  <!ENTITY md5       "a7fef40e47a66659960c0b671f2b4416">
+  <!ENTITY md5       "db572e14ced6d744b8f6946ea7c6e9e5">
   <!ENTITY plugin    "/boot/config/plugins/&name;">
   <!ENTITY emhttp    "/usr/local/emhttp/plugins/&name;">
 ]>
@@ -13,6 +13,9 @@
 <PLUGIN  name="&name;" author="&author;" version="&version;" pluginURL="&pluginURL;" min="6.9.0">
 
 <CHANGES>
+
+###2021.11.03
+- Bumped version to v3.6.1
 
 ###2021.07.08
 - Bumped version to v3.5.1
